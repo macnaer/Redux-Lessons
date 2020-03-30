@@ -9,3 +9,10 @@ export const MINUS = () => {
     type: "MINUS"
   };
 };
+
+export const MULTIPLE = payload => {
+  return {
+    type: "MULTI",
+    payload
+  };
+};

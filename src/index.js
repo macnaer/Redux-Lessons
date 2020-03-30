@@ -10,12 +10,19 @@ import * as actions from "./actions";
 
 const store = createStore(reducer);
 const { dispatch } = store;
-const { PLUS, MINUS } = bindActionCreators(actions, dispatch);
+const { PLUS, MINUS, MULTIPLE } = bindActionCreators(actions, dispatch);
 
 const updateCounter = () => {
-  document.querySelector(".counter").innerHTML = store.getState();
+  ReactDOM.render(
+    <App
+      counter={store.getState()}
+      PLUS={PLUS}
+      MINUS={MINUS}
+      MULTIPLE={() => MULTIPLE(3)}
+    />,
+    document.getElementById("root")
+  );
 };
 
 store.subscribe(updateCounter);
-
-ReactDOM.render(<App />, document.getElementById("root"));
+updateCounter();
